@@ -22,7 +22,6 @@ class StayAdmin(admin.ModelAdmin):
 
     list_filter = ('doctor', 'patient')
 
-# Register the models with the admin site
 admin.site.register(Doctor, DoctorAdmin)
 admin.site.register(Patient, PatientAdmin)
 admin.site.register(Stay, StayAdmin)

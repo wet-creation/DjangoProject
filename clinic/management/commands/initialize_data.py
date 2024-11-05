@@ -6,7 +6,6 @@ class Command(BaseCommand):
     help = 'Initialize the database with initial clinic data'
 
     def handle(self, *args, **kwargs):
-        # Insert Doctors
         doctors = [
             {"last_name": "Smith", "first_name": "John", "middle_name": "Edward", "specialization": "ent", "experience_years": 10},
             {"last_name": "Doe", "first_name": "Jane", "middle_name": "Marie", "specialization": "therapist", "experience_years": 7},
@@ -16,7 +15,6 @@ class Command(BaseCommand):
         for doc in doctors:
             Doctor.objects.get_or_create(**doc)
 
-        # Insert Patients
         patients = [
             {"last_name": "Anderson", "first_name": "Alice", "middle_name": "Patricia", "address": "123 Main St", "phone_number": "1234567890", "birth_year": 2001, "category": "child"},
             {"last_name": "White", "first_name": "Chris", "middle_name": "Thomas", "address": "456 Elm St", "phone_number": "2345678901", "birth_year": 1995, "category": "adult"},
@@ -31,7 +29,6 @@ class Command(BaseCommand):
         for pat in patients:
             Patient.objects.get_or_create(**pat)
 
-        # Insert Stays
         stays = [
             {"patient_id": 1, "admission_date": date(2023, 9, 15), "stay_days": 5, "daily_cost": 100.00, "discount_percent": 0.10, "doctor_id": 1},
             {"patient_id": 2, "admission_date": date(2023, 9, 16), "stay_days": 3, "daily_cost": 80.00, "discount_percent": 0.00, "doctor_id": 2},
