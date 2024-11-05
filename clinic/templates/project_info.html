@@ -1,0 +1,37 @@
+<!-- main_app/templates/main_app/project_info.html -->
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ project_name }}</title>
+</head>
+<body>
+    <h1>{{ project_name }}</h1>
+    <p style="font-style: italic; color: #2f4f4f;">
+        ПІБ: {{ student_info.name }}, Група: {{ student_info.group }}
+    </p>
+
+    <h2>Результати запитів</h2>
+    {% for result in query_results %}
+        <h3>{{ result.description }}</h3>
+        <table border="1">
+            <thead>
+                <tr>
+                    {% for column in result.columns %}
+                        <th>{{ column }}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in result.data %}
+                    <tr>
+                        {% for item in row %}
+                            <td>{{ item }}</td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endfor %}
+</body>
+</html>
